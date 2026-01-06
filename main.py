@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
@@ -19,3 +20,9 @@ accuracy = accuracy_score(y_test, y_pred)
 conf_matrix = confusion_matrix(y_test, y_pred)
 class_report = classification_report(y_test, y_pred)
 
+plt.figure(figsize=(6, 5))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='viridis', xticklabels=['Normal', 'Diabetes'], yticklabels=['Normal', 'Diabetes'])
+plt.title('Confusion Matrix: Decision Tree')
+plt.ylabel('Aktual')
+plt.xlabel('Prediksi')
+plt.show()
